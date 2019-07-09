@@ -1,6 +1,6 @@
 var friendsArray = [{
-    "Name": "Steve",
-    "Photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "name": "Steve",
+    "photo": "https://s3.amazonaws.com/spectrumnews-web-assets/wp-content/uploads/2018/11/13154625/20181112-SHANK3monkey-844.jpg",
     "scores": [
         5,
         1,
@@ -11,6 +11,21 @@ var friendsArray = [{
         2,
         5,
         4,
+        1
+    ],
+
+    "name": "Eduardo",
+    "photo": "https://s3.amazonaws.com/spectrumnews-web-assets/wp-content/uploads/2018/11/13154625/20181112-SHANK3monkey-844.jpg",
+    "scores": [
+        5,
+        5,
+        4,
+        2,
+        5,
+        3,
+        2,
+        2,
+        1,
         1
     ]
 }]

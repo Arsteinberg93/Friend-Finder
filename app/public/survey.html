@@ -170,20 +170,40 @@
         <br>
         <br>
 
-        <!-- Submit Button -->
         <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">
             Submit</button>
 
-        <hr>
-        <footer class="footer">
-            <div class="container">
-                <p>
-                    <a href="/api/friends">API Friends List</a> |
-                    <a href="https://github.com/Arsteinberg93/Friend-Finder" target="_blank">GitHub Repo</a>
-                </p>
-            </div>
-        </footer>
+    </div>
+    <hr>
+    <footer class="footer">
+        <div class="container">
+            <p>
+                <a href="/api/friends">API Friends List</a> |
+                <a href="https://github.com/Arsteinberg93/Friend-Finder" target="_blank">GitHub Repo</a>
+            </p>
+        </div>
+    </footer>
 
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Your New Friend</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <h2 id="match-name"></h2>
+                    <img id="match-img" src=" " alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
@@ -191,13 +211,26 @@
 </html>
 
 <script type="text/javascript">
-    $(".submit").on("click", function(event) {
+    $("#submit").on("click", function(event) {
         event.preventDefault();
 
         // Here we grab the form elements
         var newPerson = {
-            Name: $("#person-name").val().trim(),
-            Photo: $("#person-photo").val().trim(),
+            name: $("#name").val(),
+            photo: $("#photo").val(),
+            scores: [
+                $("#q1").val(),
+                $("#q2").val(),
+                $("#q3").val(),
+                $("#q4").val(),
+                $("#q5").val(),
+                $("#q6").val(),
+                $("#q7").val(),
+                $("#q8").val(),
+                $("#q9").val(),
+                $("#q10").val()
+            ]
+
 
         };
 
@@ -207,13 +240,17 @@
 
         $.post("/api/friends", newPerson,
             function(data) {
-
+                console.log(data);
                 // Clear the form when submitting
-                $("#person-name").val("");
-                $("#person-photo").val("");
+                $("#match-name").text(data.name);
+                $("#match-img").attr("src", data.photo);
+
+                $(".modal").modal("toggle");
 
 
             });
+
+
 
     });
 </script>
